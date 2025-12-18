@@ -1,4 +1,6 @@
-# pyinstaller --onefile --windowed clicker.py
+#Build exe:
+#pip install pyinstaller
+#pyinstaller --onefile --windowed clicker.py
 
 from tkinter import *
 win = Tk()
@@ -75,5 +77,6 @@ multipla3 = Button(btn_frame, text='UPGRADE (-1500)', width=15, height=5, comman
 multipla1 = Button(btn_frame, text='UPGRADE (-10)', width=15, height=5, command=lambda: btn_multipla(10)).grid(row=2, column=4, padx=10, pady=5)
 multipla2 = Button(btn_frame, text='UPGRADE (-50)', width=15, height=5, command=lambda: btn_multipla(50)).grid(row=3, column=4, padx=10, pady=5)
 multipla3 = Button(btn_frame, text='UPGRADE (-1500)', width=15, height=5, command=lambda: btn_multipla(1500)).grid(row=4, column=4, padx=10, pady=5)
+
 
 win.mainloop()
