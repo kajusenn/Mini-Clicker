@@ -2,6 +2,8 @@
 #pip install pyinstaller
 #pyinstaller --onefile --windowed clicker.py
 
+#This version is only GUI, without logic for gold and diamond
+
 from tkinter import *
 win = Tk()
 win.title('CLICKER')
@@ -80,3 +82,4 @@ multipla3 = Button(btn_frame, text='UPGRADE (-1500)', width=15, height=5, comman
 
 
 win.mainloop()
+
