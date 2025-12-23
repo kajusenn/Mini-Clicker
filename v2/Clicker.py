@@ -1,14 +1,16 @@
 #Build exe:
 #pip install pyinstaller
-#pyinstaller --onefile --windowed clicker.py
-
-#This version is only GUI, without logic for gold and diamond
+# pyinstaller --onefile --windowed clicker.py
 
 from tkinter import *
 win = Tk()
 win.title('CLICKER')
 win.geometry('520x550')
 # win.resizable(0, 0)
+
+# def fchan_gold():
+
+# def fchan_diamond():
 
 def btn_click():
     global expression
@@ -19,22 +21,14 @@ def btn_click():
     update_display()
     print(f"plus {adding}")
 
-def btn_multipla(cena):
+def btn_multipla(add, price):
     global adding
     global expression
-    if expression >= cena and cena == 10:
-        expression = expression - cena
+    if expression >= price:
+        expression = expression - price
         wood_var.set(f"{expression:,}")
-        adding += 1
-    elif expression >= cena and cena == 50:
-        expression = expression - cena
-        wood_var.set(f"{expression:,}")
-        adding += 2
-    elif expression >= cena and cena == 1500:
-        expression = expression - cena
-        wood_var.set(f"{expression:,}")
-        adding += 5
-    update_display()
+        adding += add
+
 
 def update_display():
     wood_var.set(f"{expression:,}")
@@ -68,18 +62,22 @@ btn_frame.pack(padx=55, anchor='w')
 
 click = Button(btn_frame, text='CLICK', width=15, height=5, command=lambda: btn_click()).grid(row=1, column=3, pady=(1, 10))
 
-multipla1 = Button(btn_frame, text='UPGRADE (-10)', width=15, height=5, command=lambda: btn_multipla(10)).grid(row=2, column=2, padx=10, pady=5)
-multipla2 = Button(btn_frame, text='UPGRADE (-50)', width=15, height=5, command=lambda: btn_multipla(50)).grid(row=3, column=2, padx=10, pady=5)
-multipla3 = Button(btn_frame, text='UPGRADE (-1500)', width=15, height=5, command=lambda: btn_multipla(1500)).grid(row=4, column=2, padx=10, pady=5)
+multipla_wood1 = Button(btn_frame, text='UPGRADE +1 (-100)', width=15, height=3, command=lambda: btn_multipla(1, 10)).grid(row=2, column=2, padx=10, pady=5)
+multipla_wood2 = Button(btn_frame, text='UPGRADE +2 (-500)', width=15, height=3, command=lambda: btn_multipla(2, 50)).grid(row=3, column=2, padx=10, pady=5)
+multipla_wood3 = Button(btn_frame, text='UPGRADE +5 (-5.5K)', width=15, height=3, command=lambda: btn_multipla(5, 150)).grid(row=4, column=2, padx=10, pady=5)
 
-multipla1 = Button(btn_frame, text='UPGRADE (-10)', width=15, height=5, command=lambda: btn_multipla(10)).grid(row=2, column=3, padx=10, pady=5)
-multipla2 = Button(btn_frame, text='UPGRADE (-50)', width=15, height=5, command=lambda: btn_multipla(50)).grid(row=3, column=3, padx=10, pady=5)
-multipla3 = Button(btn_frame, text='UPGRADE (-1500)', width=15, height=5, command=lambda: btn_multipla(1500)).grid(row=4, column=3, padx=10, pady=5)
+multipla_gold1 = Button(btn_frame, text='UPGRADE +1 (-50k)', width=15, height=3, command=lambda: btn_multipla(1, 50000)).grid(row=2, column=3, padx=10, pady=5)
+multipla_gold2 = Button(btn_frame, text='UPGRADE +2 (-200k)', width=15, height=3, command=lambda: btn_multipla(2, 200000)).grid(row=3, column=3, padx=10, pady=5)
+multipla_gold3 = Button(btn_frame, text='UPGRADE +5 (-400k)', width=15, height=3, command=lambda: btn_multipla(5, 400000)).grid(row=4, column=3, padx=10, pady=5)
 
-multipla1 = Button(btn_frame, text='UPGRADE (-10)', width=15, height=5, command=lambda: btn_multipla(10)).grid(row=2, column=4, padx=10, pady=5)
-multipla2 = Button(btn_frame, text='UPGRADE (-50)', width=15, height=5, command=lambda: btn_multipla(50)).grid(row=3, column=4, padx=10, pady=5)
-multipla3 = Button(btn_frame, text='UPGRADE (-1500)', width=15, height=5, command=lambda: btn_multipla(1500)).grid(row=4, column=4, padx=10, pady=5)
+multipla_diamond1 = Button(btn_frame, text='UPGRADE +1 (-10)', width=15, height=3, command=lambda: btn_multipla(10)).grid(row=2, column=4, padx=10, pady=5)
+multipla_diamond2 = Button(btn_frame, text='UPGRADE +2 (-50)', width=15, height=3, command=lambda: btn_multipla(50)).grid(row=3, column=4, padx=10, pady=5)
+multipla_diamond3 = Button(btn_frame, text='UPGRADE +5 (-1500)', width=15, height=3, command=lambda: btn_multipla(1500)).grid(row=4, column=4, padx=10, pady=5)
 
+chan_frame = Frame(win, width=330, height=170)
+chan_frame.pack(pady=10, padx=25, anchor='center')
+
+chan_btn_diamond = Button(chan_frame, text='+1 chance for diamond (1M)', width=30, height=3, command=lambda: btn_multipla(1500)).grid(row=5, column=3, padx=6, pady=5)
+chan_btn_gold = Button(chan_frame, text='+1 chance for gold (500K)', width=30, height=3, command=lambda: btn_multipla(1500)).grid(row=5, column=2, padx=6, pady=5)
 
 win.mainloop()
-
