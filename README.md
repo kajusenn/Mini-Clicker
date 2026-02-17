@@ -48,3 +48,5 @@ Everyone can:
 I encourage you to **share your improvements** and ideas.
 
 The program will also be **expanded by me** in the future.
+
+README.md made with AI
